@@ -1,28 +1,7 @@
-import { useState } from "react";
-import { getPaymentRecords } from "../services/paymentRecords.service";
-import { abbreviate } from "../utils";
 import TransactionMetricCard from "./MetricCard";
+import { Payment } from "./Payment";
 
-const paymentRecords = getPaymentRecords();
 export default function DashboardPanel() {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [recordsPerPage, ] = useState<number>(5);
-  const startIndex = (currentPage - 1) * recordsPerPage;
-  const endIndex = startIndex + recordsPerPage;
-  const displayedRecords = paymentRecords.slice(startIndex, endIndex);
-
-  const totalRecords = paymentRecords.length;
-  const totalPages = Math.ceil(totalRecords / recordsPerPage);
-
-  const getPageNumbers = () => {
-    const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pageNumbers.push(i);
-    }
-    return pageNumbers;
-  };
-
-  const pageNumbers = getPageNumbers();
 
   const transactionMetrics: TransactionMetric[] = [
     {
@@ -47,22 +26,6 @@ export default function DashboardPanel() {
     // Add more metrics as needed
   ];
 
-  const getStatusColor = (status: string): string => {
-    switch (status) {
-      case "Reconciled":
-        return "brand-green";
-      case "Un-reconciled":
-        return "[#787C90]";
-      case "Settled":
-        return "brand-blue";
-      case "Unsettled":
-        return "brand-yellow";
-      case "Pending":
-        return "brand-yellow";
-      default:
-        return "brand-green";
-    }
-  };
 
   return (
     <div className="w-full flex-1 flex flex-col gap-8 py-8 pr-6">
@@ -109,123 +72,8 @@ export default function DashboardPanel() {
         </svg>
       </div>
       {/* payment section */}
-      <div className="flex flex-col flex-1">
-        <h1 className="text-[#262626] text-3xl">Payments</h1>
-        <div className="flex w-full h-24 bg-brand-blue/20">table-controls</div>
-        <div className="table">
-          <div className="overflow-x-auto">
-            <table className=" text-sm w-full">
-              <thead className="bg-[#EAECF0] relative">
-                <tr>
-                  <th className="p-3 text-left relative z-0">Item Type</th>
-                  <th className="p-3 text-left relative z-0">Name</th>
-                  <th className="p-3 text-left relative z-0">Price</th>
-
-                  <th className="p-3 text-left relative z-0">Transaction No</th>
-
-                  <th className="p-3 text-left relative z-0 whitespace-nowrap">
-                    Time
-                  </th>
-                  <th className="p-3 text-left relative z-0">Status</th>
-                  <th className="p-3 text-left relative z-0"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {displayedRecords &&
-                  displayedRecords.map(
-                    (
-                      {
-                        img,
-                        name,
-                        price,
-                        status,
-                        transactionNumber,
-                        transactionTime,
-                      },
-                      index
-                    ) => (
-                      <tr className="border-b py-3" key={index}>
-                        <td className="p-3 text-left">
-                          <div className="w-9 h-9 rounded-full text-white bg-[#7F8FA4] flex justify-center items-center">
-                            {abbreviate(name)}
-                          </div>
-                        </td>
-                        <td className="p-3 text-left text-[14px]">{name}</td>
-                        <td className="p-3 text-left text-[14px]">{price}</td>
-                        <td className="p-3 text-left text-[14px]">
-                          {transactionNumber}
-                        </td>
-                        <td className="p-3 text-left text-[14px]">
-                          {transactionTime}
-                        </td>
-                        <td className="p-3 text-left text-[14px]">
-                          <div
-                            className={`text-sm p-2 pl-4 items-center  flex gap-2 rounded-md text-center text-${getStatusColor(status)} border rounded-s-full rounded-e-full`}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="9"
-                              height="9"
-                              viewBox="0 0 9 9"
-                              className={`fill-${getStatusColor(status)}`}
-                              fill="none"
-                            >
-                              <circle
-                                cx="4.5"
-                                cy="4.5"
-                                r="4.5"
-                                fill={getStatusColor(status)}
-                              />
-                            </svg>
-                            <p className="font-light text-[14px]">{status}</p>
-                          </div>
-                        </td>
-                        <td className="p-3 text-left  gap-3 items-center ">
-                          <img src="./img/Arrow.png" alt="" />
-                        </td>
-                      </tr>
-                    )
-                  )}
-              </tbody>
-            </table>
-          </div>
-          <div className="page-controller-detail flex justify-between mt-6">
-            <p className="font-sans text-xs">
-              Showing {startIndex + 1} to {endIndex} of {paymentRecords.length}{" "}
-              entries
-            </p>
-            <div className="page-controller">
-              <button
-                className="p-2 border border-brand-lighter-grey font-sans text-xs hover:bg-brand-blue/80 hover:text-white disabled:bg-transparent disabled:text-black"
-                onClick={() => setCurrentPage(currentPage - 1)}
-                disabled={currentPage === 1}
-              >
-                Previous
-              </button>
-              {pageNumbers.map((pageNumber) => (
-                <button
-                  key={pageNumber}
-                  onClick={() => setCurrentPage(pageNumber)}
-                  className={
-                    pageNumber === currentPage
-                      ? "bg-brand-blue text-white p-2 border-y font-sans text-xs border-brand-lighter-grey  hover:bg-brand-blue/80 hover:text-white disabled:bg-transparent disabled:text-black"
-                      : "p-2 border border-brand-lighter-grey font-sans text-xs   hover:bg-brand-blue/80 hover:text-white disabled:bg-transparent disabled:text-black"
-                  }
-                >
-                  {pageNumber}
-                </button>
-              ))}
-              <button
-                className="p-2 border border-brand-lighter-grey font-sans text-xs  hover:bg-brand-blue/80 hover:text-white disabled:bg-transparent disabled:text-black"
-                onClick={() => setCurrentPage(currentPage + 1)}
-                disabled={endIndex >= paymentRecords.length}
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+      <Payment />
     </div>
   );
 }
