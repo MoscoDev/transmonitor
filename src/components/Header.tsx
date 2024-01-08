@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getUserProfile } from "../services/profile.service"
 
 export default function Header() {
-    const [profile, setProfile] = useState<UserProfile>()
+    const [profile, setProfile] = useState<UserProfile>(getUserProfile());
     useEffect(() => {
      const userProfile =   getUserProfile()
     
