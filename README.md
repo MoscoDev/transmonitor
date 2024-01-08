@@ -11,7 +11,6 @@ Transmonitor is a TypeScript-based React project for monitoring transactions.
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
 
-
 ## Overview
 
 Transmonitor is a TypeScript-based React project designed for monitoring transactions. It provides a comprehensive overview of transaction metrics, daily transaction volumes, values, and more.
@@ -54,8 +53,6 @@ npm start
 # or
 yarn start
 ```
-
-
 
 ## Folder Structure
 
