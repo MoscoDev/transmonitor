@@ -54,8 +54,8 @@ export default function DashboardPanel() {
             </div>
           ))}
       </div>
-      <div className="flex w-full items-center">
-        <div className="w-[65%] flex-wrap">
+      <div className="flex w-full">
+        <div className="w-[65%] flex-wrap p-2 relative shadow rounded-sm bg-white">
           <div className="flex w-full justify-between items-center">
             <h4 className="text-lg font-bold text-brand-grey p-2.5">
               {formattedToday}
@@ -63,23 +63,31 @@ export default function DashboardPanel() {
             <div className="flex flex-row gap-6">
               <select
                 name="date-range"
-                className="accent-brand-blue text-[#414042] border border-[#CED0DA] text-xs p-1"
+                className="accent-brand-blue rounded-md shadow text-[#414042] border  text-xs p-1"
                 id="date-range"
               >
-                <option className="text-xs" value="daily">Daily</option>
-                <option className="text-xs" value="weekly">Weekly</option>
-                <option className="text-xs" value="monthly">Monthly</option>
-                <option className="text-xs" value="yearly">Yearly</option>
+                <option className="text-xs" value="daily">
+                  Daily
+                </option>
+                <option className="text-xs" value="weekly">
+                  Weekly
+                </option>
+                <option className="text-xs" value="monthly">
+                  Monthly
+                </option>
+                <option className="text-xs" value="yearly">
+                  Yearly
+                </option>
               </select>
               <div className="control flex gap-3 items-center">
-                <button className="p-1 bg-white border border-brand-nav-color">
+                <button className="p-1 bg-white border shadow rounded-md px-2">
                   <img
                     src="./img/left-arrow.png"
                     className="w-5 h-5"
                     alt="left-arrow"
                   />
                 </button>{" "}
-                <button className="p-1 bg-white border border-brand-nav-color">
+                <button className="p-1 bg-white border shadow rounded-md px-2">
                   <img
                     src="./img/right-arrow.png"
                     className="w-5 h-5"
@@ -89,10 +97,9 @@ export default function DashboardPanel() {
               </div>
             </div>
           </div>
-          {/* <img. src="./img/mainChart.svg" className="w-full" alt="" /> */}
           <Chart />
         </div>
-        <div className="flex flex-1 flex-col gap-2 p-4">
+        <div className="flex flex-1 flex-col gap-2 px-1">
           <ProgressCard title="Orders" pending={20} reconcilled={80} />
           <ProgressCard title="Payments" pending={20} reconcilled={80} />
         </div>

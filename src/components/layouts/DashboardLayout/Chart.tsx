@@ -16,13 +16,13 @@ const data = [
   { name: "Jun", Total: 1700 },
 ];
 
-const Chart = ({ aspect = 2 / 1, title = "Sales Stats" }) => {
+const Chart = ({ aspect = 3.2 / 1, title = "Sales Stats" }) => {
   return (
     <div className="bg-white z--1">
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
-          width={730}
-          height={250}
+        //   width={730}
+        //   height={250}
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
