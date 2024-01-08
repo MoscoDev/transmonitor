@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Transmonitor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Transmonitor is a TypeScript-based React project for monitoring transactions.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Transmonitor is a TypeScript-based React project designed for monitoring transactions. It provides a comprehensive overview of transaction metrics, daily transaction volumes, values, and more.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- [Node.js](https://nodejs.org/) installed
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) package manager
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    git clone https://github.com/MoscoDev/transmonitor
+    ```
 
-### `npm run eject`
+2. Move to the project directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    ```bash
+    cd transmonitor
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Usage
 
-## Learn More
+To run the development server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+# or
+yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Folder Structure
+
+transmonitor/
+|-- src/
+|   |-- components/
+|   |-- pages/
+|   |-- services/
+|   |-- utils
+|-- public/
+|-- README.md
+|-- ...
