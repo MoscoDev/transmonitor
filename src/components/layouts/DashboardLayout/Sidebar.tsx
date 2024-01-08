@@ -92,10 +92,8 @@ export default function Sidebar() {
         </div>
         {sideBarMenu &&
           sideBarMenu.map(({ navItems, title }, index) => (
-            <React.Fragment
-              key={index}
-            >
-             <SidebarItems navItems={navItems} title={title}/>
+            <React.Fragment key={index}>
+              <SidebarItems navItems={navItems} title={title} />
             </React.Fragment>
           ))}
       </div>

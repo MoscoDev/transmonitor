@@ -25,8 +25,8 @@ export default function Header() {
             type="text"
             name="search"
             id="search"
-            className="px-3 py-2 focus-visible:border-b-brand-blue focus-visible:border-none focus-visible:outline-none placeholder:text-base placeholder:font-normal "
-            placeholder="search"
+            className="px-3 py-2 bg-transparent focus-visible:border-b-brand-blue focus-visible:border-none focus-visible:outline-none placeholder:text-base placeholder:font-normal "
+            placeholder="search..."
           />
         </div>
       </div>

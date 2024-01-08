@@ -1,32 +1,21 @@
-import './App.css';
-import DashboardPanel from './components/DashboardPanel';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="flex gap-6 relative z-0  bg-[#F7F8FA]">
-        <Sidebar />
-        <DashboardPanel />
-      </div>
-      {/* <header className="App-header">
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route
+        path="/*"
+        element={
+          <div className="flex justify-center items-center h-screen flex-col">
+            <h1 className="text-9xl text-brand-blue">404</h1>
+            <p>Sorry nothing is on this route</p>
+          </div>
+        }
+      />
+    </Routes>
   );
 }
 

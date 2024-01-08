@@ -1,49 +1,4 @@
-import TransactionMetricCard from "./MetricCard";
-import { Payment } from "./Payment";
-
-export default function DashboardPanel() {
-
-  const transactionMetrics: TransactionMetric[] = [
-    {
-      name: "Daily Transaction Volume",
-      value: 2342,
-    },
-    {
-      name: "Daily Transaction Value",
-      value: 2342,
-      currency: "₦",
-    },
-    {
-      name: "Total Transaction Volume",
-      value: 452000,
-    },
-    {
-      name: "Total Transaction Value",
-      value: 4000000,
-      currency: "₦",
-    },
-
-    // Add more metrics as needed
-  ];
-
-
-  return (
-    <div className="w-full flex-1 flex flex-col gap-8 py-8 pr-6">
-      <div className="flex gap-3 flex-wrap">
-        {transactionMetrics &&
-          transactionMetrics.map(({ name, value, currency }, index) => (
-            <div className="flex gap-3 relative " key={index}>
-              <TransactionMetricCard
-                key={index}
-                name={name}
-                value={value}
-                currency={currency}
-              />
-            </div>
-          ))}
-      </div>
-      <div className="flex w-full h-96 bg-brand-blue/20">
-        <svg
+ <svg
           xmlns="http://www.w3.org/2000/svg"
           width="689"
           height="160"
@@ -70,10 +25,3 @@ export default function DashboardPanel() {
             </linearGradient>
           </defs>
         </svg>
-      </div>
-      {/* payment section */}
-      
-      <Payment />
-    </div>
-  );
-}
